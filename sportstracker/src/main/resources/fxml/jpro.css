@@ -1,0 +1,14 @@
+/**********************************************/
+/* jpro                                         */
+/************************************************/
+.jpro-dialog {
+    -fx-background-color: rgba(0, 0, 0, .5);
+
+}
+
+.jpro-dialog .jpro-dialog-content-root {
+    -fx-border-color: black;
+    -fx-border-width: 2;
+    -fx-background-color: #EEE;
+    -fx-padding: 30px;
+}

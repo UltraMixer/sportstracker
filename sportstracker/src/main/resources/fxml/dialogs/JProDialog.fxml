@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.layout.*?>
+<fx:root type="StackPane"
+         xmlns:fx="http://javafx.com/fxml"
+         fx:id="root" stylesheets="@../jpro.css" styleClass="jpro-dialog">
+    <Group>
+        <VBox styleClass="jpro-dialog-content-root" spacing="20">
+            <Pane fx:id="contentRoot" VBox.vgrow="ALWAYS"></Pane>
+            <HBox fx:id="buttonBar" fillHeight="false" alignment="CENTER_RIGHT" spacing="10" VBox.vgrow="NEVER"></HBox>
+        </VBox>
+    </Group>
+</fx:root>

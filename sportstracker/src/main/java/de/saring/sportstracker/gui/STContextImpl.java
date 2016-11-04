@@ -59,18 +59,24 @@ public class STContextImpl implements STContext {
     public void showMessageDialog(final Window parent, final Alert.AlertType alertType, final String titleKey,
             final String messageKey, final Object... arguments) {
 
+        //todo: jpro: Alert-Klasse ersetzen!
+        /*
         final String message = fxResources.getString(messageKey, arguments);
         final Alert alert = new Alert(alertType, message);
         alert.initOwner(parent);
         alert.setTitle(fxResources.getString(titleKey));
         alert.setHeaderText(null);
         alert.showAndWait();
+        */
+
     }
 
     @Override
     public Optional<ButtonType> showConfirmationDialog(final Window parent, final String titleKey,
             final String messageKey, final ButtonType... buttonTypes) {
 
+        //todo: jpro: Alert-Klasse ersetzen!
+        /*
         final Alert alert = new Alert(Alert.AlertType.CONFIRMATION, fxResources.getString(messageKey));
         alert.initOwner(parent);
         alert.setTitle(fxResources.getString(titleKey));
@@ -82,18 +88,24 @@ public class STContextImpl implements STContext {
         }
 
         return alert.showAndWait();
+        */
+        return null;
     }
 
     @Override
     public Optional<String> showTextInputDialog(final Window parent, final String titleKey, final String messageKey,
             final String initialValue) {
 
+        //todo: jpro: Alert-Klasse ersetzen!
+        /*
         final TextInputDialog inputDlg = new TextInputDialog(initialValue == null ? "" : initialValue);
         inputDlg.initOwner(parent);
         inputDlg.setTitle(getResources().getString(titleKey));
         inputDlg.setContentText(getResources().getString(messageKey));
         inputDlg.setHeaderText(null);
         return inputDlg.showAndWait();
+        */
+        return null;
     }
 
     @Override

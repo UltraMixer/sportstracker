@@ -1,0 +1,86 @@
+group 'com.ultramixer'
+version '1.0-SNAPSHOT'
+
+buildscript {
+
+  repositories {
+    jcenter()
+    mavenLocal()
+    mavenCentral()
+
+    maven {
+      url "http://mix-software.com:8081/nexus/content/repositories/jpro-snapshots"
+    }
+    maven {
+      url "http://sandec.bintray.com/repo"
+    }
+
+    maven {
+      url "http://mix-software.com:8081/nexus/content/repositories/jpro-snapshots"
+    }
+    maven {
+      url "http://sandec.bintray.com/repo"
+    }
+  }
+
+
+
+  dependencies {
+    classpath 'com.jprotechnologies.jpro:jpro-plugin-gradle:0.1.8-SNAPSHOT'
+  }
+}
+
+
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+
+
+
+apply plugin: 'com.jprotechnologies.jpro'
+
+repositories {
+  jcenter()
+  mavenCentral()
+  maven {
+    url "http://mix-software.com:8081/nexus/content/repositories/ultramixer-private"
+    credentials {
+      username UM_NEXUS_DEPLOYMENT_USERNAME
+      password UM_NEXUS_DEPLOYMENT_PASSWORD
+    }
+  }
+  maven {
+    url "http://mix-software.com:8081/nexus/content/repositories/ultramixer-private-snapshots"
+    credentials {
+      username UM_NEXUS_DEPLOYMENT_USERNAME
+      password UM_NEXUS_DEPLOYMENT_PASSWORD
+    }
+  }
+
+  mavenLocal();
+
+}
+
+dependencies {
+  testCompile group: 'junit', name: 'junit', version: '4.11'
+  compile fileTree(dir: 'libs', include: '**/*')
+}
+
+
+startServerCommand {
+  jvmArgs '-Xmx2048m'
+}
+
+
+
+mainClassName = 'de.saring.sportstracker.gui.STApplication'
+
+jpro {
+  port = 9012
+  visible = false
+  noRenderJobs = true
+  //useJProVM =false
+  jproVersion = "0.1.8-SNAPSHOT"
+}

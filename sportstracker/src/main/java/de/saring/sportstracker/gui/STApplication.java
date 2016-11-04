@@ -3,6 +3,7 @@ package de.saring.sportstracker.gui;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.sun.javafx.application.ParametersImpl;
 import de.saring.sportstracker.storage.IStorage;
 import de.saring.sportstracker.storage.XMLStorage;
 import eu.lestard.easydi.EasyDI;
@@ -45,9 +46,18 @@ public class STApplication extends Application {
         easyDI.bindInterface(STDocument.class, STDocumentImpl.class);
         easyDI.bindInterface(STController.class, STControllerImpl.class);
 
+        Parameters parameters = getParameters();
+        if(parameters==null)
+        {
+            parameters = new ParametersImpl();
+        }
+
         // initialize the document
+        System.out.println("easyDI = " + easyDI);
         document = easyDI.getInstance(STDocument.class);
-        document.evaluateCommandLineParameters(getParameters().getRaw());
+        System.out.println("document = " + document);
+        System.out.println("getParameters() = " + parameters);
+        document.evaluateCommandLineParameters(parameters.getRaw());
         document.loadOptions();
 
         // initialize the context (set format utils for current configuration)
@@ -117,6 +127,8 @@ public class STApplication extends Application {
                 "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS %4$s %2$s %5$s %6$s%n");
 
         // TODO remove when using a JavaFX map viewer
+        //if(!WebAPI.isBrowser())
+        /*
         if (!PlatformUtils.isMacOSX()) {
             // initialize system look&feel for the Swing components (JXMapViewer viewer in ExerciseViewer)
             // => needs to be done at startup, otherwise deadlock at ExerciseViewer start in Linux
@@ -128,6 +140,7 @@ public class STApplication extends Application {
                 LOGGER.log(Level.WARNING, "Failed to set look&feel to " + lookAndFeelClassName + "!", e);
             }
         }
+        */
 
         launch(args);
     }
